@@ -21,7 +21,7 @@ public class ArraySamples {
 		// Time Complexity : O(n) 
 		// Space complexity : O(1)
 		int n = (a.length+2) * (a.length+1) /2;
-		System.out.println("n : "+n);
+		System.out.println(" n : "+n);
 		int sum = 0;
 		for(int i = 0 ; i < a.length ; i++)
 			sum = sum + a[i];
