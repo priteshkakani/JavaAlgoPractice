@@ -1,6 +1,10 @@
 package Algo;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
+import java.util.stream.Collectors;
+
 
 public class ArraySamples {
 
@@ -11,11 +15,17 @@ public class ArraySamples {
 	public static void main(String[] args) {
 		int[] a = {1,3,5,7,9,10,2,4,6};
 		int[] b = {1,3,5,7,9,10,2,4,1,2,2};
+		String s = "aabbcc";
 		findMissingNumber(a);
 		findDuplicateNumber(b);
 		findDuplicateNumberUsingHashMap(b);
-		
+		List<String> strings = Arrays.asList("abc", "", "bc", "efg", "abcd","", "jkl");
+		List<String> filtered = strings.stream().filter(string -> !string.isEmpty()).collect(Collectors.toList());
+		System.out.println("Printing stream : ");
+		filtered.forEach(System.out::println);
 	}
+	
+	
 	
 	static void findMissingNumber(int[] a) {
 		// Time Complexity : O(n) 
@@ -54,6 +64,8 @@ public class ArraySamples {
 		//for(int i =0;i<b.length;i++)
 			// If not in hashmap, insert number
 	}
+	
+	
 	
 	
 }
