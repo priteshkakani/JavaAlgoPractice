@@ -1,7 +1,7 @@
 package practice;
 
-public class problem1 {
+public class Interview4 {
     public static void main(String[] args){
-
+        
     }
 }
