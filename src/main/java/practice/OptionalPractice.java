@@ -1,11 +1,22 @@
 package practice;
 
+import java.util.Optional;
+
 public class OptionalPractice {
     public static void main(String args[]){
         String[] words = new String[10];
         Optional<String> checkNull = Optional.ofNullable(words[5]);
-        if(checkNull.is)
-        String word = words[5].toLowerCase();
-        System.out.print(word);
+        if(checkNull.isPresent())
+        {
+            String word = words[5].toLowerCase();
+            System.out.print(word);
+        }
+        else
+            System.out.println("word is null");
+        //String word = words[5].toLowerCase();
+       // System.out.print(word);
+        OptionalPractice op = new OptionalPractice();
+        Object o = new Object();
+        //o.
     }
 }

@@ -4,7 +4,7 @@ package practice;
 // targetSum = 10
 // algoexpert
 
-public class problem8 {
+public class Array1 {
     public static int[] twoNumberSum(int[] array, int targetSum) {
         int n = array.length;
         int[] a = {};
@@ -24,12 +24,29 @@ public class problem8 {
         return a;
     }
 
+    static long maxContiguousSumSubArray(int arr[], int n){
+        long sum = 0;
+
+        System.out.print(sum);
+        return sum;
+    }
+
+    static int minimumNoOfJumps(int arr[]){
+        int n = arr.length;
+        //arr[arr[0]];
+        return 0;
+    }
+
     public static void main(String[] args){
         int[] arr = {3,5,-4,8,11,1,-1,6};
         int targetSum = 13;
-        int[] answer = problem8.twoNumberSum(arr,targetSum);
+        int[] answer = Array1.twoNumberSum(arr,targetSum);
         for(int i =0;i<answer.length;i++) {
             System.out.println(answer[i]);
         }
+        int[] arr1 = {3,5,-4,8,11,1,-1,6};
+        int n = arr1.length;
+        maxContiguousSumSubArray(arr1,n);
+        minimumNoOfJumps(arr1);
     }
 }

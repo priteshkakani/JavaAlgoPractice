@@ -4,9 +4,7 @@ package practice;
 //Input: s = "anagram", t = "nagaram"
 //Output: true
 
-import java.util.HashMap;
-
-public class Problem12 {
+public class String1 {
 
     public static boolean isAnagram(String s, String t) {
         //HashMap hm = new HashMap<Character, >();
@@ -38,11 +36,7 @@ public class Problem12 {
         try{
             //return "1";
             throw new ArithmeticException("Throws");
-        }
-        catch(Exception e){
-            return "2";
-        }
-        finally{
+        } finally{
             return "3";
         }
     }
@@ -77,8 +71,9 @@ public class Problem12 {
 
     public static void main(String[] args) {
         String s = "anagram";
+        char c = 'a';
         String t = "anagram ";
-        //Problem12 problem12 = new Problem12();
+        //String1 problem12 = new String1();
         //System.out.println("isAnagram : " +problem12.isAnagram(s,t));
         System.out.println(equalsCheckMethod(s,t));
         System.out.println(equalsCheckOperator(s,t));
@@ -89,7 +84,7 @@ public class Problem12 {
 
         //String tryCatch = tryCatchTrial();
         //System.out.println(tryCatch);
-        removeChar(s);
+        //removeChar(str, c);
 
     }
 }

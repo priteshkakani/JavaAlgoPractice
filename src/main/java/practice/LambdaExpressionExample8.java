@@ -1,7 +1,6 @@
 package practice;
-import java.util.*;
 /*
-@FunctionalInterface
+@FunctionalInterface1
 interface Square{
     int calculate(int x);
 }
@@ -17,7 +16,7 @@ public class FunctionalInterface1 {
 */
 
 
-/*@FunctionalInterface  //It is optional
+/*@FunctionalInterface1  //It is optional
 interface Drawable{
     public void draw();
 }
@@ -50,7 +49,7 @@ public class LambdaExpressionExample3{
 }
 */
 /*
-@FunctionalInterface
+@FunctionalInterface1
 interface Sayable{
     public String say(String name);
 }
@@ -115,12 +114,31 @@ interface Sayable{
 public class LambdaExpressionExample8{
     public static void main(String[] args) {
 
-        // You can pass multiple statements in lambda expression
+        /*// You can pass multiple statements in lambda expression
         Sayable person = (message)-> {
             String str1 = "I would like to say, ";
             String str2 = str1 + message;
             return str2;
         };
-        System.out.println(person.say("time is precious."));
+        System.out.println(person.say("time is precious."));*/
+
+        //Thread Example without lambda
+
+        Runnable r1 = new Runnable(){
+            public void run(){
+                System.out.println("Thread1 is running...");
+            }
+        };
+
+        Thread t1=new Thread(r1);
+        t1.start();
+
+        //Thread Example with lambda
+        Runnable r2=()->{
+            System.out.println("Thread2 is running...");
+        };
+        Thread t2=new Thread(r2);
+        t2.start();
     }
 }
+

@@ -5,7 +5,30 @@ package practice;
 
 import java.util.Arrays;
 
-public class problem2 {
+public class String3 {
+
+    public static char kthNonRepeatingChar(String str, int k){
+        int count = 0;
+        char result = '\0';
+        for(int i = 0;i<str.length();i++){
+            boolean repeating = false;
+            for(int j = i+1;j<str.length();j++){
+                if(str.charAt(i) == str.charAt(j)){
+                    repeating = true;
+                    break;
+                }
+            }
+            if(!repeating)
+            {
+                count++;
+                if(count == k){
+                    result = str.charAt(i);
+                    break;
+                }
+            }
+        }
+        return result;
+    }
     public static String reverseWords(String s) {
 
         StringBuilder input1 = new StringBuilder();
@@ -20,6 +43,7 @@ public class problem2 {
         answer = answer.trim();
         return answer;
     }
+
     public static void main(String[] args){
         String input = "Let's take LeetCode contest";
         reverseWords(input);
@@ -36,12 +60,24 @@ public class problem2 {
 //        }
 //        System.out.println(str);
         int size = s1.length;
-        Arrays.sort(s);
+        Arrays.sort(s1);
         int end = Math.min(s1[0].length(), s1[size-1].length());
         int i =0;
         while(i<end && s1[0].charAt(i) == s1[size-1].charAt(i))
             i++;
         String pre = s1[0].substring(0,i);
         System.out.println(pre);
+
+        String str = "geeksforgeeks";
+        int k = 3;
+        char result = kthNonRepeatingChar(str,k);
+        if(result == '\0') {
+            System.out.println(" There is no kth no repeating character in string");
+        }
+        else {
+            System.out.println("The " + k + "th non-repeating character in string" + " is" + result + ".");
+        }
+        
+        }
     }
-}
+

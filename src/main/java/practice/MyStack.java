@@ -1,2 +1,2 @@
-package practice;public class MyStack {
-}
+package practice;
+

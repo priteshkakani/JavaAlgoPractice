@@ -2,7 +2,7 @@ package practice;
 
 import java.util.Arrays;
 
-public class practice13 {
+public class String2 {
 
     public static String validParentheses(String s) {
         //Stack
@@ -11,13 +11,14 @@ public class practice13 {
     }
 
     //14. Longest Common Prefix
-    public static String longestCommonPrefix(String[] strs) {
+    public static String longestCommonPrefix(String[] input) {
         String str = "";
-        int len = strs.length;
-        for(int i = 0;i <= strs.length-2;i++) {
-            for(int j = 0;j <= len-2;j++) {
-                str = str + strs[j].charAt(i-1);
-                if(strs[j].charAt(i) == strs[j+1].charAt(i))
+        int len = input.length;
+        int slen = input[0].length();
+        for(int i = 0;i < slen;i++) {
+            for(int j = 0;j < len-1;j++) {
+                //str = str + input[j].charAt(i);
+                if(input[j].charAt(i) == input[j+1].charAt(i))
                     continue;
                 else
                     return str;
@@ -57,13 +58,34 @@ public class practice13 {
         return result;
     }
 
+    public static String longestCommonPrefix3(String[] arr) {
+        Arrays.sort(arr);
+        String s1 = arr[0];
+        String s2 = arr[arr.length-1];
+        int index = 0;
+        while(index < arr.length && index < s2.length()){
+            if(s1.charAt(index) == s2.charAt(index)){
+                index++;
+            }
+            else{
+                break;
+            }
+        }
+        return s1.substring(0,index);
+    }
+
     public static void main(String[] args) {
         String s = "(){}[]";
         validParentheses(s);
         //14. Longest Common Prefix
         String[] strs = {"flower","flow","flight"};
-        longestCommonPrefix(strs);
-        longestCommonPrefix1(strs);
-        longestCommonPrefix2(strs);
+        String lcp = longestCommonPrefix(strs);
+        System.out.println(lcp);
+        String lcp1 = longestCommonPrefix1(strs);
+        System.out.println(lcp1);
+        String lcp2 = longestCommonPrefix2(strs);
+        System.out.println(lcp2);
+        String lcp3 = longestCommonPrefix3(strs);
+        System.out.println(lcp3);
     }
 }

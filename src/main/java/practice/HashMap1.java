@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 //Longest Palindrome in a String
-public class Problem10 {
+public class HashMap1 {
     static String longestPalin(String S){
         // code here
 
@@ -55,9 +55,35 @@ public class Problem10 {
         return temp;
     }
 
+    public static void printFreq(int[] arr){
+        HashMap<Integer,Integer> hm5 = new HashMap<>();
+        for(int i = 0;i<arr.length;i++){
+            Integer c = hm5.get(arr[i]);
+            if(hm5.get(arr[i]) == null)
+                hm5.put(arr[i],1);
+            else
+                hm5.put(arr[i],++c);
+        }
+        for(Map.Entry entry : hm5.entrySet())
+            System.out.println("Frequency of " + entry.getKey() + " is " + entry.getValue());
+    }
+
+    public static void printFreq1(int[] arr){
+        TreeMap<Integer,Integer> hm5 = new TreeMap<>();
+        for(int i = 0;i<arr.length;i++){
+            Integer c = hm5.get(arr[i]);
+            if(hm5.get(arr[i]) == null)
+                hm5.put(arr[i],1);
+            else
+                hm5.put(arr[i],++c);
+        }
+        for(Map.Entry entry : hm5.entrySet())
+            System.out.println("Frequency of " + entry.getKey() + " is " + entry.getValue());
+    }
+
     public static void main(String[] args){
         String s = "aaaabbaa";
-        System.out.println( Problem10.longestPalin(s));
+        System.out.println( HashMap1.longestPalin(s));
         // Java Program to sort hashmap by values
         HashMap<String, Integer> hm = new HashMap<String, Integer>();
 
@@ -70,6 +96,7 @@ public class Problem10 {
         hm.put("Networking", 80);
         hm.put("Networking", 81);
         hm.put("Networking", 82);
+        hm.put(null, 82);
         //Map<String,Integer> hm1 =sortValue(hm);
         //Map<String,Integer> hm2 =sortValue1(hm);
         //Map<String,Integer> hm3 =sortValue2(hm);
@@ -84,8 +111,14 @@ public class Problem10 {
         for (Map.Entry<String,Integer> en: hm3.entrySet()){
             System.out.println("Key = "+ en.getKey() + ", Value :"+ en.getValue());
         }*/
-        for (Map.Entry<String,Integer> en: hm4.entrySet()){
+       /* for (Map.Entry<String,Integer> en: hm4.entrySet()){
             System.out.println("Key = "+ en.getKey() + ", Value :"+ en.getValue());
-        }
+        }*/
+
+        /* Java program to print frequencies of all elements using HashMap */
+        int[] arr = {10,5,6,5,10,10};
+        printFreq(arr);
+        printFreq1(arr);
+
     }
 }

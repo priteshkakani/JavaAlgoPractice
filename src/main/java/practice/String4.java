@@ -2,8 +2,6 @@ package practice;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 //Valid Palindrome
 //Input: s = "A man, a plan, a canal: Panama"
@@ -12,7 +10,7 @@ import java.util.stream.Stream;
 //A phrase is a palindrome if, after converting all uppercase letters into lowercase letters
 // and removing all non-alphanumeric characters, it reads the same forward and backward.
 // Alphanumeric characters include letters and numbers.
-public class StreamBasics {
+public class String4 {
 
     public boolean isPalindrome(String s) {
         s = s.toLowerCase();
@@ -100,7 +98,7 @@ public class StreamBasics {
 
     public static void main(String[] args) {
         String s = "A man, a plan, a canal: Panama";
-        StreamBasics streamBasics = new StreamBasics();
+        String4 streamBasics = new String4();
         //System.out.println("IsPalindrome : " +streamBasics.isPalindrome(s));
         
         //Given string str, we need to print the reverse of individual words.
@@ -201,5 +199,6 @@ public class StreamBasics {
 
 
     }
+
 
 }
