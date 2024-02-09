@@ -1,2 +1,5 @@
-package DesignPatterns;public class PrototypePattern {
+package DesignPatterns;
+
+public class PrototypePattern {
+
 }

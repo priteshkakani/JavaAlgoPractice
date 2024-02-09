@@ -121,7 +121,7 @@ class TreeNode {
      ListNode(int val) { this.val = val; }
      ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  }
- class problem7 {
+ class Striver {
      public void sort012(int a[], int n) {
          // code here
          int count0 = 0;
@@ -146,8 +146,16 @@ class TreeNode {
          }
      }
 
+     static class Pair{
+         TreeNode node;
+         int hd;
+         public Pair(TreeNode node, int hd){
+             this.node = node;
+             this.hd = hd;
+         }
+     }
      public static void main(String[] args) {
-         problem7 problem = new problem7();
+         Striver problem = new Striver();
          int[] arr = {0, 2, 1, 2, 0};
          int n = arr.length;
          //problem.sort012(arr,n);
@@ -527,7 +535,7 @@ class TreeNode {
             System.out.println(map.getKey() + " "+ map.getValue());
           }
 
-         Scanner scanner = new Scanner(System.in);
+         /*Scanner scanner = new Scanner(System.in);
 
          int friends = scanner.nextInt();
 
@@ -557,18 +565,257 @@ class TreeNode {
                  }
                  System.out.println();
              }
+         }*/
+         int[] num = new int[]{1,2,3};
+         List<Integer> sums = subsetSum(num);
+         System.out.println("Subset Sums "+sums);
+         System.out.print("****Fibanacci :");
+         System.out.println(fib(2));
+         System.out.println(fib(3));
+         System.out.println(fib(4));
+         // Given an integer n, return true if it is a power of four. Otherwise, return false.
+         System.out.println("Power of 4 : ");
+         System.out.println(isPowerOfFour(4));
+         System.out.println("Power of 2 : ");
+         System.out.println(isPowerOfTwo(4));
+         System.out.print("Is Valid Parenthesis : ");
+         System.out.println(isValidParenthesis("[[}]"));
+         int[] nums21 = {4,1,2};
+         int[] nums22 = {1,3,4,2};
+         int[] nums23 = nextGreaterElement( nums21, nums22);
+         ArrayList result1 = new ArrayList();
+         int[] num1 = {1,2};
+         generateSubsetSums(num1, 0,0,result1);
+         System.out.print("generateSubsetSums : ");
+         for(int i : num1) {
+             System.out.print(" " + i);
          }
+         System.out.println("Bottom View:");
+         bottomView(root);
+         int[] arr23 = {1,2};
+         int[] arr111 = {1,2,2,1,1,3};
+         //System.out.println("uniqueOccurrences : "+uniqueOccurrences(arr));
+         System.out.println("uniqueOccurrences1 : "+uniqueOccurrences(arr111));
+         System.out.println("uniqueOccurrences23 : "+uniqueOccurrences(arr23));
+         // Max Number of K-Sum Pairs
+         int[] nums26 = {1,2,3,4};
+         System.out.println("Max Number of K sum Pairs: "+maxOperations1(nums26, 5));
+         int[] nums27 = {1,2,3,4};
+         System.out.println("Maximum Average Subarray I: "+findMaxAverage(nums27,4));
+         int[] nums28 = {5};
+         System.out.println("Maximum Average Subarray I: "+findMaxAverage(nums28,1));
+         // Given the head of a linked list, rotate the list to the right by k places.
+         //ListNode head4 = new ListNode();
+         //ListNode rotateRight(head4, 2) ;
+         System.out.println("Combinations: "+combineK( 4, 2));
+         System.out.println("Combinations1: "+combineK( 1, 1));
+         List<String> ls = binaryTreePaths(root);
+         System.out.println("binaryTreePaths");
+         System.out.println(ls);
+         int[] nums34 = {1};
+         System.out.println("Permutations : "+permute1(nums34));
 
      }
 
+     public static List<List<Integer>> permute1(int[] nums) {
+        return null;
+     }
+
+     public static List<String> binaryTreePaths(TreeNode root) {
+        return null;
+     }
+    
+     private static void backtrackCombinationsK(int start, int n, int k, List<Integer> current,
+                                                List<List<Integer>> result){
+         // If k becomes 0, it means a valid combination of size k is found.
+        if(k==0){
+            // Adds a copy of the current combination to the result list.
+            result.add(new ArrayList<>(current));
+            System.out.println("result : "+result);
+            //Returns to explore other possibilities.
+            return;
+        }
+        for(int i = start;i<=n;i++){
+            // Adds the current number to the current combination.
+            System.out.println("i: "+i);
+            System.out.println("k: "+k);
+            current.add(i);
+            System.out.println("current : "+current);
+            // Recursively calls backtrack with the updated parameters.
+            backtrackCombinationsK(i+1,n,k-1,current, result);
+            // Removes the last added number to backtrack and explore other possibilities.
+            current.remove(current.size()-1);
+        }
+     }
+     public static List<List<Integer>> combineK(int n, int k) {
+        List<List<Integer>> result = new ArrayList<>();
+        List<Integer> current = new ArrayList<>();
+        backtrackCombinationsK(1,n,k,current,result);
+        return result;
+     }
+     public ListNode rotateRight(ListNode head, int k) {
+        return null;
+     }
+     public static double findMaxAverage(int[] nums, int k) {
+        int sum = 0;
+        for(int i =0;i<k;i++){
+            sum += nums[i];
+        }
+        int maxSum = sum;
+        // slide the window to find subarray with maximum sum
+        for(int i =k;i<nums.length;i++){
+            sum = sum + nums[i] - nums[i-k];
+            maxSum = Math.max(maxSum, sum);
+        }
+        double max_average = (double) maxSum / k;
+        return max_average;
+     }
+
+     public static int maxOperations1(int[] nums, int k) {
+        int operations = 0;
+        Arrays.sort(nums);
+        int left = 0, right = nums.length - 1;
+        while(left < right){
+            int total = nums[left] + nums[right];
+            if(total == k){
+                operations++;
+                left++;
+                right--;
+            } else if (total < k){
+                left++;
+            } else {
+                right--;
+            }
+        }
+        return operations;
+     }
+     public static boolean uniqueOccurrences(int[] arr) {
+         HashMap<Integer, Integer> hm = new HashMap<>();
+         HashSet<Integer> hs = new HashSet<>();
+         for(int key : arr){
+            if(hm.containsKey(key)){
+                int value = hm.get(key);
+                hm.put(key,value+1);
+            } else {
+                hm.put(key, 1);
+            }
+         }
+         Collection<Integer> li = hm.values();
+         for(int i : li) {
+             if (hs.contains((i))){
+                 return false;
+             }
+             hs.add(i);
+         }
+         return true;
+     }
+
+     public static boolean uniqueOccurrences1(int[] arr) {
+         Map<Integer, Integer> countMap = new HashMap<>();
+         for(int num : arr){
+             countMap.put(num, countMap.getOrDefault(num,0)+1);
+         }
+         Set<Integer> occurencesSet = new HashSet<>(countMap.values());
+         return countMap.size() == occurencesSet.size();
+     }
+
+     public int maxOperations(int[] nums, int k) {
+        return 0;
+     }
+     public TreeNode deleteNode(TreeNode root, int key) {
+        return root;
+     }
+
+     public static void bottomView(TreeNode root) {
+         if(root == null) {
+             return;
+         }
+         TreeMap<Integer, Integer> map = new TreeMap<>();
+         Queue<Pair> queue = new LinkedList<>();
+         queue.offer(new Pair(root, 0));
+
+         while(!queue.isEmpty()){
+             Pair current = queue.poll();
+             TreeNode node = current.node;
+             int hd = current.hd;
+             // Update bottom most node for current horizantal distance.
+             map.put(hd, node.val);
+
+             if(node.left != null){
+                 queue.offer(new Pair(node.left, hd -1));
+             }
+
+             if(node.right != null){
+                 queue.offer(new Pair(node.right, hd+1));
+             }
+         }
+
+        for(int key : map.keySet()){
+            System.out.print(map.get(key) + " ");
+        }
+     }
+
+     public static int[] nextGreaterElement(int[] nums1, int[] nums2) {
+        return new int[2];
+     }
+     public static boolean isValidParenthesis(String s) {
+        Stack<Character> stack = new Stack<>();
+        for(char bracket : s.toCharArray()) {
+            if(bracket == '(' || bracket == '{' ||  bracket == '['){
+                stack.push(bracket);
+            } else {
+                if (stack.isEmpty()){
+                    return false;
+                }
+                char top = stack.pop();
+                if( ! (( top == '(' && bracket == ')') || (top == '{' && bracket == '}')
+                || (top == '[' && bracket == ']'))){
+                    return false;
+                }
+            }
+        }
+        return stack.isEmpty();
+     }
+     public static boolean isPowerOfTwo(int n) {
+       return n>0 && (n&(n-1)) == 0;
+     }
+     public static boolean isPowerOfFour(int n) {
+        return (n > 0) && (n&(n-1)) == 0 && ((n & 0x55555555) != 0);
+     }
+     public static int fib(int n){
+         if(n==0)
+             return 0;
+         if(n==1)
+             return 1;
+         return fib(n-1) + fib(n-2);
+     }
+     //You are given an array 'nums' of ‘n’ integers.
+     //Return all subset sums of 'nums' in a non-decreasing order.
+     public static List<Integer> subsetSum(int nums[]) {
+        List<Integer> result = new ArrayList<>();
+        //Arrays.sort(nums);
+        generateSubsetSums(nums,0,0,result);
+        return result;
+     }
+
+     private static void generateSubsetSums(int[] nums, int index, int currentSum, List<Integer> result){
+         if(index == nums.length){
+             result.add(currentSum);
+             return;
+         }
+         // Include current element in subset
+        generateSubsetSums(nums, index+1, currentSum + nums[index], result);
+         // Exclude current element in subset
+        generateSubsetSums(nums, index+1, currentSum, result);
+     }
 
      private static List<Character> findFruitJuiceMix(Map<Character, Integer> calorieMap, int targetCalories) {
          List<Character> result = new ArrayList<>();
-         backtrack(calorieMap, targetCalories, result, new StringBuilder(), 'a');
+         backtrackCalories(calorieMap, targetCalories, result, new StringBuilder(), 'a');
          return result;
      }
 
-     private static void backtrack(Map<Character, Integer> calorieMap, int targetCalories, List<Character> result, StringBuilder current, char currentFruit) {
+     private static void backtrackCalories(Map<Character, Integer> calorieMap, int targetCalories, List<Character> result, StringBuilder current, char currentFruit) {
          if (targetCalories == 0) {
              result.addAll(current.toString().chars().mapToObj(c -> (char) c).collect(Collectors.toList()));
              return;
@@ -583,7 +830,7 @@ class TreeNode {
                  current.append(currentFruit);
              }
 
-             backtrack(calorieMap, targetCalories - i * calorieMap.get(currentFruit), result, current, (char) (currentFruit + 1));
+             backtrackCalories(calorieMap, targetCalories - i * calorieMap.get(currentFruit), result, current, (char) (currentFruit + 1));
 
              for (int j = 0; j < i; j++) {
                  current.deleteCharAt(current.length() - 1);
@@ -611,20 +858,28 @@ class TreeNode {
          return mergedRoot;
      }
      public static String reverseVowels(String s) {
-        String reverse = "";
-        int len = s.length();
-        for(int i =0;i<len;i++){
-            if(s.charAt(i) == s.charAt(len-1) && (s.charAt(i) == 'a' ||
-                    s.charAt(i) == 'e' ||
-                    s.charAt(i) == 'i' ||
-                    s.charAt(i) == 'o' ||
-                    s.charAt(i) == 'u') ) {
-                char c = s.charAt(i);
-                //s.charAt(i) = s.charAt(len - i);
-                //s.charAt(s.length() - i) = c;
+         // 2 pointer approach.
+        char[] chars = s.toCharArray();
+        int left = 0, right = chars.length - 1;
+        while(left < right) {
+            while(left<right && !isVowel(chars[left])){
+                left++;
+            }
+            while(left<right && !isVowel(chars[right])){
+                right--;
+            }
+            if(left<right){
+                char temp = chars[left];
+                chars[left] = chars[right];
+                chars[right] = temp;
+                left++;
+                right--;
             }
         }
-        return reverse;
+        return new String(chars);
+     }
+     private static boolean isVowel(char c){
+         return "aeiouAEIOU".indexOf(c) != -1;
      }
 
      public static boolean canPlaceFlowers1(int[] flowerbed, int n) {
@@ -1645,10 +1900,4 @@ class TreeNode {
         return max_profit;
 
     }
-
-     @Override
-     protected void finalize() throws Throwable {
-         super.finalize();
-         System.out.println("Object is destroyed.");
-     }
  }
